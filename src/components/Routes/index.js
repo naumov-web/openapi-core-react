@@ -5,10 +5,12 @@ import { Switch, Route, BrowserRouter } from "react-router-dom";
 import IndexPage from '../pages/public/IndexPage';
 import RegisterPage from '../pages/public/RegisterPage';
 import NotFoundPage from '../pages/public/NotFoundPage';
+import Menu from '../Menu';
 
 const Routes = () => {
   return (
     <BrowserRouter>
+      <Menu />
       <Switch>
         <Route path="/register" component={RegisterPage} />
         <Route exact path="/" component={IndexPage} />
