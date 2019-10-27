@@ -5,6 +5,7 @@ import FormRow from '../../../hocs/FormRow';
 
 import './styles.styl';
 import Label from '../../../ui-kit/Label';
+import TextInput from '../../../ui-kit/TextInput';
 
 const RegisterPage = () => {
   return (
@@ -15,6 +16,7 @@ const RegisterPage = () => {
           <FormRow>
             <>
               <Label text="Email:" htmlFor="email" />
+              <TextInput name="email" id="email" placeholder="Введите свой Email" />
             </>
           </FormRow>
         </>
