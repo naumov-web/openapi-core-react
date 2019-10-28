@@ -3,10 +3,18 @@
 @import "../../../styles/paddings.styl"
 @import "../../../styles/sizes.styl"
 
+.password-input-wrapper 
+  position relative
+  
+  .small-icon-button
+    position absolute
+    right 15px
+    top 18px
+
 .password-input
   width 100%
   box-sizing border-box
-  padding input-padding-top input-padding-right input-padding-bottom input-padding-left
+  padding input-padding-top input-icon-padding-right input-padding-bottom input-padding-left
   border-radius default-border-radius
   border 1px solid input-border-color
   font-size input-font-size

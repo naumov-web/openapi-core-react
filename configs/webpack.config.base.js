@@ -28,6 +28,20 @@ module.exports = {
             loader: "stylus-loader" // compiles Stylus to CSS
           }
         ]
+      },
+      {
+        test: /\.svg$/,
+        use: [
+          {
+            loader: "babel-loader"
+          },
+          {
+            loader: "react-svg-loader",
+            options: {
+              jsx: true // true outputs JSX tags
+            }
+          }
+        ]
       }
     ]
   }
