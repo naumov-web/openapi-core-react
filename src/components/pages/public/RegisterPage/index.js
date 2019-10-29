@@ -1,13 +1,11 @@
 import React from 'react';
 import SubHeader from '../../../ui-kit/SubHeader';
 import FormContainer from '../../../hocs/FormContainer';
-import FormRow from '../../../hocs/FormRow';
 
 import './styles.styl';
-import Label from '../../../ui-kit/Label';
-import TextInput from '../../../ui-kit/TextInput';
-import PasswordInput from '../../../ui-kit/PasswordInput';
-import Button from '../../../ui-kit/Button';
+
+import RegisterForm from './RegisterForm';
+
 
 const RegisterPage = () => {
   return (
@@ -15,31 +13,7 @@ const RegisterPage = () => {
       <FormContainer>
         <>
           <SubHeader text="Регистрация" />
-          <FormRow>
-            <>
-              <Label text="Email:" htmlFor="email" />
-              <TextInput name="email" id="email" placeholder="Введите Email" />
-            </>
-          </FormRow>
-          <FormRow>
-            <>
-              <Label text="Пароль:" htmlFor="password" />
-              <PasswordInput name="password" id="password" placeholder="Введите пароль" />
-            </>
-          </FormRow>
-          <FormRow>
-            <>
-              <Label text="Подтвердите пароль:" htmlFor="password_confirmation" />
-              <PasswordInput 
-                name="password_confirmation" 
-                id="password_confirmation" 
-                placeholder="Подтвердите пароль" 
-              />
-            </>
-          </FormRow>
-          <FormRow>
-            <Button text="Зарегистрироваться" fullWidth />
-          </FormRow>
+          <RegisterForm />
         </>
       </FormContainer>
     </div>
