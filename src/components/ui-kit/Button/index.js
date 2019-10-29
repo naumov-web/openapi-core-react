@@ -4,24 +4,27 @@ import cn from 'classnames';
 
 import './styles.styl';
 
-const Button = ({ text, type, fullWidth }) => {
+const Button = ({ text, style, fullWidth, type }) => {
   const classNames = cn({
     "button": true,
-    "button-primary": type === 'primary',
+    "button-primary": style === 'primary',
     "button-full-width": fullWidth
   });
-  return <button className={classNames} type="button">{ text }</button>;
+  // eslint-disable-next-line react/button-has-type
+  return <button className={classNames} type={type}>{ text }</button>;
 };
 
 Button.propTypes = {
-  text : PropTypes.string.isRequired,
-  type : PropTypes.string,
-  fullWidth : PropTypes.bool
+  text: PropTypes.string.isRequired,
+  style: PropTypes.string,
+  type: PropTypes.string,
+  fullWidth: PropTypes.bool
 };
 
 Button.defaultProps = {
-  type: 'primary',
-  fullWidth: false
+  style: 'primary',
+  fullWidth: false,
+  type: 'button'
 };
 
 export default Button;

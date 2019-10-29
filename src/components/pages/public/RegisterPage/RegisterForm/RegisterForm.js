@@ -1,4 +1,5 @@
 import React from 'react';
+import { Formik, Field } from 'formik'
 
 import FormRow from '../../../../hocs/FormRow';
 import Label from '../../../../ui-kit/Label';
@@ -7,33 +8,82 @@ import PasswordInput from '../../../../ui-kit/PasswordInput';
 import Button from '../../../../ui-kit/Button';
 
 const RegisterForm = () => {
-  return <div className="register-form">
+  const formValues = {email: "", password: "", password_confirmation: ""};
+  return (
+    <Formik
+      initialValues={formValues}
+      onSubmit={(values) => {console.log(values)}}
+    >
+      {({ 
+        handleSubmit,
+        handleChange,
+        handleBlur
+      }) => (
+        <form className="register-form" action="" method="post" onSubmit={handleSubmit}>
           <FormRow>
             <>
               <Label text="Email:" htmlFor="email" />
-              <TextInput name="email" id="email" placeholder="Введите Email" />
+              <Field 
+                name="email" 
+                render={
+                  () => (
+                    <TextInput 
+                      name="email" 
+                      id="email" 
+                      placeholder="Введите Email" 
+                      onChange={handleChange} 
+                      onBlur={handleBlur} 
+                    />
+                  )
+                } 
+              />
             </>
           </FormRow>
           <FormRow>
             <>
               <Label text="Пароль:" htmlFor="password" />
-              <PasswordInput name="password" id="password" placeholder="Введите пароль" />
+              <Field 
+                name="password" 
+                render={
+                  () => (
+                    <PasswordInput 
+                      name="password" 
+                      id="password" 
+                      placeholder="Введите пароль" 
+                      onChange={handleChange} 
+                      onBlur={handleBlur} 
+                    />
+                  )
+                } 
+              />
             </>
           </FormRow>
           <FormRow>
             <>
               <Label text="Подтвердите пароль:" htmlFor="password_confirmation" />
-              <PasswordInput 
+              <Field 
                 name="password_confirmation" 
-                id="password_confirmation" 
-                placeholder="Подтвердите пароль" 
+                render={
+                  () => (
+                    <PasswordInput 
+                      name="password_confirmation" 
+                      id="password_confirmation" 
+                      placeholder="Подтвердите пароль" 
+                      onChange={handleChange} 
+                      onBlur={handleBlur} 
+                    />
+                  )
+                } 
               />
             </>
           </FormRow>
           <FormRow>
-            <Button text="Зарегистрироваться" fullWidth />
+            <Button text="Зарегистрироваться" type="submit" fullWidth />
           </FormRow>
-  </div>;
+        </form>
+)}
+      </Formik>
+  );
 };
 
 export default RegisterForm;

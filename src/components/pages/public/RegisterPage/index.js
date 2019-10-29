@@ -6,7 +6,6 @@ import './styles.styl';
 
 import RegisterForm from './RegisterForm';
 
-
 const RegisterPage = () => {
   return (
     <div className="public-page register-page">

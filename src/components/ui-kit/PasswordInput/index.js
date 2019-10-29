@@ -5,7 +5,7 @@ import './styles.styl';
 import EyeIcon from '../../../public/images/eye.svg';
 import SmallIconButton from '../SmallIconButton';
 
-const PasswordInput = ({ name, id, placeholder }) => {
+const PasswordInput = ({ name, id, placeholder, onChange, onBlur }) => {
   const [type, setType] = useState('password');
 
   const onChangeType = () => {
@@ -14,7 +14,15 @@ const PasswordInput = ({ name, id, placeholder }) => {
 
   return (
     <div className="password-input-wrapper">
-      <input className="password-input" type={type} name={name} id={id} placeholder={placeholder} />
+      <input 
+        className="password-input" 
+        type={type} 
+        name={name} 
+        id={id} 
+        placeholder={placeholder} 
+        onChange={onChange}
+        onBlur={onBlur}
+      />
       <SmallIconButton onClick={onChangeType}><EyeIcon /></SmallIconButton>
     </div>
   );
@@ -23,11 +31,15 @@ const PasswordInput = ({ name, id, placeholder }) => {
 PasswordInput.propTypes = {
   name: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
-  placeholder: PropTypes.string
+  placeholder: PropTypes.string,
+  onChange: PropTypes.func,
+  onBlur: PropTypes.func
 };
 
 PasswordInput.defaultProps = {
-  placeholder: ''
+  placeholder: '',
+  onChange: () => {},
+  onBlur: () => {},
 };
 
 export default PasswordInput;
