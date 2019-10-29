@@ -7,6 +7,7 @@ import './styles.styl';
 import Label from '../../../ui-kit/Label';
 import TextInput from '../../../ui-kit/TextInput';
 import PasswordInput from '../../../ui-kit/PasswordInput';
+import Button from '../../../ui-kit/Button';
 
 const RegisterPage = () => {
   return (
@@ -35,6 +36,9 @@ const RegisterPage = () => {
                 placeholder="Подтвердите пароль" 
               />
             </>
+          </FormRow>
+          <FormRow>
+            <Button text="Зарегистрироваться" fullWidth />
           </FormRow>
         </>
       </FormContainer>
