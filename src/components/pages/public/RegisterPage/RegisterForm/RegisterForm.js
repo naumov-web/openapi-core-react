@@ -81,8 +81,8 @@ const RegisterForm = () => {
             <Button text="Зарегистрироваться" type="submit" fullWidth />
           </FormRow>
         </form>
-)}
-      </Formik>
+      )}
+    </Formik>
   );
 };
 
