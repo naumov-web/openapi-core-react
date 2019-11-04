@@ -6,18 +6,25 @@ import Label from '../../../../ui-kit/Label';
 import TextInput from '../../../../ui-kit/TextInput';
 import PasswordInput from '../../../../ui-kit/PasswordInput';
 import Button from '../../../../ui-kit/Button';
+import validationRules from '../../../../../utils/validations/register_form';
+import FieldError from '../../../../ui-kit/FieldError';
+
+import './styles.styl';
 
 const RegisterForm = () => {
   const formValues = {email: "", password: "", password_confirmation: ""};
+
   return (
     <Formik
       initialValues={formValues}
+      validationSchema={validationRules}
       onSubmit={(values) => {console.log(values)}}
     >
       {({ 
         handleSubmit,
         handleChange,
-        handleBlur
+        handleBlur,
+        errors
       }) => (
         <form className="register-form" action="" method="post" onSubmit={handleSubmit}>
           <FormRow>
@@ -37,6 +44,7 @@ const RegisterForm = () => {
                   )
                 } 
               />
+              {errors.email && <FieldError text={errors.email} />}
             </>
           </FormRow>
           <FormRow>
@@ -56,6 +64,7 @@ const RegisterForm = () => {
                   )
                 } 
               />
+              {errors.password && <FieldError text={errors.password} />}
             </>
           </FormRow>
           <FormRow>
@@ -75,6 +84,7 @@ const RegisterForm = () => {
                   )
                 } 
               />
+              {errors.password_confirmation && <FieldError text={errors.password_confirmation} />}
             </>
           </FormRow>
           <FormRow>
