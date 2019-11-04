@@ -1,0 +1,1 @@
+export const SET_ERROR_MESSAGES = 'register.set_error_messages';
