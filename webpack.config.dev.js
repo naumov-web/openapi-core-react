@@ -18,7 +18,13 @@ module.exports = merge(
       new HtmlWebPackPlugin({
         template: './src/public/index.html'
       }),
-      new webpack.HotModuleReplacementPlugin()
+      new webpack.HotModuleReplacementPlugin(),
+      new webpack.DefinePlugin({
+        'process.env': {
+          NODE_ENV: JSON.stringify('production'),
+          API_URL: JSON.stringify(process.env.API_URL)
+        }
+      })
     ],
     devServer: {
       contentBase: './public',
