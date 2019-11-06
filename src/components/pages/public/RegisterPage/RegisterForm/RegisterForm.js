@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Formik, Field } from 'formik'
 
 // Components
@@ -15,14 +16,14 @@ import { mergeRecursive } from '../../../../../utils/merge_objects';
 
 import './styles.styl';
 
-const RegisterForm = () => {
+const RegisterForm = ({ submitForm, isLoading, errorMessages }) => {
   const formValues = {email: "", password: "", password_confirmation: ""};
 
   return (
     <Formik
       initialValues={formValues}
       validationSchema={validationRules}
-      onSubmit={(values) => {console.log(values)}}
+      onSubmit={(values) => {submitForm(values)}}
     >
       {({ 
         handleSubmit,
@@ -95,13 +96,17 @@ const RegisterForm = () => {
               </>
             </FormRow>
             <FormRow>
-              <Button text="Зарегистрироваться" type="submit" fullWidth />
+              <Button text="Зарегистрироваться" type="submit" fullWidth isLoading={isLoading} />
             </FormRow>
           </form>
         );
       }}
     </Formik>
   );
+};
+
+RegisterForm.propTypes = {
+  submitForm : PropTypes.func.isRequired
 };
 
 export default RegisterForm;
