@@ -16,9 +16,9 @@ import { mergeRecursive } from '../../../../../utils/merge_objects';
 
 import './styles.styl';
 
-const RegisterForm = ({ submitForm, isLoading, errorMessages }) => {
+const RegisterForm = ({ submitForm, isLoading, serverErrors }) => {
   const formValues = {email: "", password: "", password_confirmation: ""};
-
+  
   return (
     <Formik
       initialValues={formValues}
@@ -31,7 +31,7 @@ const RegisterForm = ({ submitForm, isLoading, errorMessages }) => {
         handleBlur,
         errors
       }) => {
-        const mergedErrors = mergeRecursive(errors, {});
+        const mergedErrors = mergeRecursive(errors, serverErrors);
         
         return (
           <form className="register-form" action="" method="post" onSubmit={handleSubmit}>

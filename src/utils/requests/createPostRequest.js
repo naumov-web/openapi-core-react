@@ -11,6 +11,14 @@ export default async function (base, url, payload) {
       throw error;
     }
 
+    if (response.status === 422) {
+      const error = {
+        errors: response.data.errors,
+        unauthorized: false,
+      };
+      throw error;
+    }
+
     return null;
   }
 };

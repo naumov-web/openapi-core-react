@@ -1,17 +1,18 @@
 // Redux methods
-import { createSetIsLoadingAction, createSetErrorMessagesAction } from '../../store/register/actionCreators';
-import { createSetIsLoggedAction } from '../../store/auth/actionCreators';
+import { 
+  createSetIsLoadingAction, 
+  createSetErrorMessagesAction, 
+  createSetIsLoggedAction 
+} from '../../store/auth/actionCreators';
 // API methods
-import { postRegister } from '../../utils/apis/auth.api';
+import { postLogin } from '../../utils/apis/auth.api';
 // Utils methods
 import { setToken } from '../../utils/local_storage/token';
 
-export default async (payload, options) => {
-  const { dispatch, history } = options;
+export default async (payload, { dispatch, history }) => {
   dispatch(createSetIsLoadingAction(true));
-
   try {
-    const data = await postRegister(payload);
+    const data = await postLogin(payload);
     dispatch(createSetErrorMessagesAction({}));
     setToken(data.token);
     dispatch(createSetIsLoggedAction(true));
@@ -21,4 +22,4 @@ export default async (payload, options) => {
   }
 
   dispatch(createSetIsLoadingAction(false));
-};
+}

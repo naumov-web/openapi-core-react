@@ -8,9 +8,23 @@ const menuItems = [
     link: '/register',
     title: 'Регистрация',
     visible: 'public'
+  },
+  {
+    link: '/account',
+    title: 'Настройки пользователя',
+    visible: 'protected'
+  },
+  {
+    link: '/logout',
+    title: 'Выйти',
+    visible: 'protected'
   }
 ];
 
 export const getPublicMenuItems = () => {
   return menuItems.filter(item => item.visible === 'public');
+};
+
+export const getProtectedMenuItems = () => {
+  return menuItems.filter(item => item.visible === 'protected');
 };

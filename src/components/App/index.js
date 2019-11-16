@@ -6,6 +6,7 @@ import * as reducers from '../../store/reducers';
 import Routes from '../Routes';
 
 import "../../styles/main.styl";
+import RoutesWrapper from '../Routes/RoutesWrapper';
 
 const store = createStore(combineReducers(reducers));
 
@@ -13,7 +14,9 @@ const App = () => {
   return (
     <div className="app">
       <Provider store={store}>
-        <Routes />
+        <RoutesWrapper>
+          <Routes />
+        </RoutesWrapper>
       </Provider>
     </div>
   );

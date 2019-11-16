@@ -1,19 +1,16 @@
-import React from 'react';
+import { connect } from 'react-redux';
+import { compose } from 'recompose';
+// Redux
+import { getIsLogged } from '../../store/auth/reducer';
+// Component
+import Menu from './Menu';
 
-import Link from '../ui-kit/Link';
-import { getPublicMenuItems } from '../../config/menu';
+function mapStateToProps(state) {
+  return {
+    isLogged: getIsLogged(state)
+  };
+}
 
-import './styles.styl';
-
-const items = getPublicMenuItems();
-
-const Menu = () => {
-  return (
-    <div className="main-menu">{ items.map(
-      item => <div key={`menu-item-wrapper-${item.link}`}><Link link={item.link} text={item.title} /></div>
-    ) }
-    </div>
-  );
-};
-
-export default Menu;
+export default compose(
+  connect(mapStateToProps)
+)(Menu);
