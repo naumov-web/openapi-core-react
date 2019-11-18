@@ -13,7 +13,7 @@ export default function reduce(state = initialState, action = {}) {
   switch(action.type) {
     case SET_IS_LOGGED:
       return state.merge({
-        error_messages: action.is_logged,
+        is_logged: action.is_logged,
       });
     case SET_IS_LOADING:
       return state.merge({

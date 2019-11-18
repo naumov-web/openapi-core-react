@@ -9,8 +9,6 @@ import ProfilePage from '../pages/account/ProfilePage';
 import LogoutPage from '../pages/account/LogoutPage';
 import NotFoundPage from '../pages/public/NotFoundPage';
 import Menu from '../Menu';
-// Hocs
-import OnlyLogged from '../hocs/OnlyLogged';
 
 const Routes = () => {
   return (

@@ -5,9 +5,9 @@ export const createSetIsLoadingAction = (isLoading) => ({
   is_loading: isLoading
 });
 
-export const createSetIsLoggedAction = (isLoading) => ({
+export const createSetIsLoggedAction = (isLogged) => ({
   type: SET_IS_LOGGED,
-  is_logged: isLoading
+  is_logged: isLogged
 });
 
 export const createSetErrorMessagesAction = (errorMessages) => ({
