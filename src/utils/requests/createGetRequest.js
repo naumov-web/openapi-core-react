@@ -1,6 +1,6 @@
 export default async function (base, url) {
   try {
-    const response = await base.post(url);
+    const response = await base.get(url);
     const { data } = response;
     return data;
   } catch ({ response }) {
