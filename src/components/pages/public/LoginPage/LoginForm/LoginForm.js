@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Formik, Field } from 'formik'
 
 import FormRow from '../../../../hocs/FormRow';
@@ -80,5 +81,13 @@ const LoginForm = ({ submitForm, isLoading, serverErrors }) => {
     </Formik>
   );
 }
+
+LoginForm.propTypes = {
+  submitForm : PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  serverErrors: PropTypes.shape({
+    email: PropTypes.string
+  }).isRequired
+};
 
 export default LoginForm;

@@ -16,23 +16,28 @@ import { mergeRecursive } from '../../../../../utils/merge_objects';
 
 import './styles.styl';
 
-const ProfileForm = ({ submitForm, isLoading, serverErrors }) => {
-  const formValues = {email: "", password: "", password_confirmation: ""};
+const ProfileForm = ({ submitForm, isLoading, serverErrors, profile }) => {
+  const formValues = mergeRecursive(
+    {email: profile.email}, 
+    {password: "", password_confirmation: ""}
+  );
   
   return (
     <Formik
       initialValues={formValues}
       validationSchema={validationRules}
       onSubmit={(values) => {submitForm(values)}}
+      enableReinitialize
     >
       {({ 
+        values,
         handleSubmit,
         handleChange,
         handleBlur,
         errors
       }) => {
         const mergedErrors = mergeRecursive(errors, serverErrors);
-        
+
         return (
           <form className="profile-form" action="" method="post" onSubmit={handleSubmit}>
             <FormRow>
@@ -40,6 +45,7 @@ const ProfileForm = ({ submitForm, isLoading, serverErrors }) => {
                 <Label text="Email:" htmlFor="email" />
                 <Field 
                   name="email" 
+                  value={values.email}
                   render={
                     () => (
                       <TextInput 
@@ -48,6 +54,7 @@ const ProfileForm = ({ submitForm, isLoading, serverErrors }) => {
                         placeholder="Введите Email" 
                         onChange={handleChange} 
                         onBlur={handleBlur} 
+                        value={values.email}
                       />
                     )
                   } 
@@ -103,6 +110,21 @@ const ProfileForm = ({ submitForm, isLoading, serverErrors }) => {
       }}
     </Formik>
   );
+};
+
+ProfileForm.propTypes = {
+  profile: PropTypes.shape({
+    email: PropTypes.string
+  }).isRequired,
+  serverErrors: PropTypes.shape({
+    email: PropTypes.string
+  }).isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  submitForm: PropTypes.func
+};
+
+ProfileForm.defaultProps = {
+  submitForm: () => {}
 };
 
 export default ProfileForm;

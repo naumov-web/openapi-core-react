@@ -106,7 +106,11 @@ const RegisterForm = ({ submitForm, isLoading, serverErrors }) => {
 };
 
 RegisterForm.propTypes = {
-  submitForm : PropTypes.func.isRequired
+  submitForm : PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  serverErrors: PropTypes.shape({
+    email: PropTypes.string
+  }).isRequired
 };
 
 export default RegisterForm;

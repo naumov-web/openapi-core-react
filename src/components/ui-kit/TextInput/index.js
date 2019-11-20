@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 
 import './styles.styl';
 
-const TextInput = ({ name, id, placeholder, onChange, onBlur }) => {
+const TextInput = ({ name, id, placeholder, onChange, onBlur, value }) => {
+  
   return (
     <div className="text-input-wrapper">
       <input 
@@ -14,12 +15,14 @@ const TextInput = ({ name, id, placeholder, onChange, onBlur }) => {
         name={name} 
         id={id} 
         placeholder={placeholder} 
+        defaultValue={value}
       />
     </div>
   );
 };
 
 TextInput.propTypes = {
+  value: PropTypes.string,
   name: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
@@ -28,6 +31,7 @@ TextInput.propTypes = {
 };
 
 TextInput.defaultProps = {
+  value: '',
   placeholder: '',
   onChange: () => {},
   onBlur: () => {},
