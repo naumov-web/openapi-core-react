@@ -13,6 +13,8 @@ import FieldError from '../../../../ui-kit/FieldError';
 // Utils
 import { mergeRecursive } from '../../../../../utils/merge_objects';
 
+import './styles.styl';
+
 const LoginForm = ({ submitForm, isLoading, serverErrors }) => {
   const formValues = {email: "", password: ""};
 

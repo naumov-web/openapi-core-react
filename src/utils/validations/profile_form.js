@@ -9,8 +9,9 @@ export default Yup.object().shape({
   password_confirmation: Yup.string()
           .when('password', {
             is: (password) => password,
-            then: Yup.string().required(errorMessages.required),
+            then: Yup.string()
+              .required(errorMessages.required)
+              .oneOf([Yup.ref('password'), null], errorMessages.password_confirmation),
             otherwise: Yup.string()
           })
-          .oneOf([Yup.ref('password'), null], errorMessages.password_confirmation),
 });
