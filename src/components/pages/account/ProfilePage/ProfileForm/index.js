@@ -9,6 +9,7 @@ import {
   getSuccessMessage 
 } from '../../../../../store/profile/reducer';
 // Effects
+import leaveProfile from '../../../../../effects/account/leaveProfile';
 import loadProfile from '../../../../../effects/account/loadProfile';
 import updateProfile from '../../../../../effects/account/updateProfile';
 // Components
@@ -27,6 +28,10 @@ const withLifecycle = lifecycle({
   componentDidMount(){
     const { dispatch, history } = this.props;
     loadProfile({ dispatch, history });
+  },
+  componentWillUnmount(){
+    const { dispatch } = this.props;
+    leaveProfile({ dispatch });
   }
 });
 

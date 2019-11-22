@@ -15,8 +15,9 @@ import FieldError from '../../../../ui-kit/FieldError';
 import { mergeRecursive } from '../../../../../utils/merge_objects';
 
 import './styles.styl';
+import SuccessMessage from '../../../../ui-kit/SuccessMessage';
 
-const ProfileForm = ({ submitForm, isLoading, serverErrors, profile }) => {
+const ProfileForm = ({ submitForm, isLoading, serverErrors, profile, successMessage }) => {
   const formValues = mergeRecursive(
     {email: profile.email}, 
     {password: "", password_confirmation: ""}
@@ -40,6 +41,11 @@ const ProfileForm = ({ submitForm, isLoading, serverErrors, profile }) => {
 
         return (
           <form className="profile-form" action="" method="post" onSubmit={handleSubmit}>
+            {successMessage && (
+              <FormRow>
+                <SuccessMessage text={successMessage} />
+              </FormRow>
+            )}
             <FormRow>
               <>
                 <Label text="Email:" htmlFor="email" />
@@ -120,11 +126,13 @@ ProfileForm.propTypes = {
     email: PropTypes.string
   }).isRequired,
   isLoading: PropTypes.bool.isRequired,
-  submitForm: PropTypes.func
+  submitForm: PropTypes.func,
+  successMessage: PropTypes.string
 };
 
 ProfileForm.defaultProps = {
-  submitForm: () => {}
+  submitForm: () => {},
+  successMessage: null
 };
 
 export default ProfileForm;

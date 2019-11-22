@@ -10,6 +10,11 @@ const menuItems = [
     visible: 'public'
   },
   {
+    link: '/projects',
+    title: 'Проекты',
+    visible: 'protected'
+  },
+  {
     link: '/account',
     title: 'Настройки пользователя',
     visible: 'protected'
