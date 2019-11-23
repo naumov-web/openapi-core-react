@@ -10,12 +10,12 @@ import PasswordInput from '../../../../ui-kit/PasswordInput';
 import Button from '../../../../ui-kit/Button';
 import validationRules from '../../../../../utils/validations/profile_form';
 import FieldError from '../../../../ui-kit/FieldError';
+import SuccessMessage from '../../../../ui-kit/SuccessMessage';
 
 // Utils
 import { mergeRecursive } from '../../../../../utils/merge_objects';
 
 import './styles.styl';
-import SuccessMessage from '../../../../ui-kit/SuccessMessage';
 
 const ProfileForm = ({ submitForm, isLoading, serverErrors, profile, successMessage }) => {
   const formValues = mergeRecursive(

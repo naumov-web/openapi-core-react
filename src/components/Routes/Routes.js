@@ -6,6 +6,7 @@ import IndexPage from '../pages/public/IndexPage';
 import LoginPage from '../pages/public/LoginPage';
 import RegisterPage from '../pages/public/RegisterPage';
 import ProfilePage from '../pages/account/ProfilePage';
+import ProjectsListPage from '../pages/account/ProjectsPages/ProjectsListPage';
 import LogoutPage from '../pages/account/LogoutPage';
 import NotFoundPage from '../pages/public/NotFoundPage';
 import Menu from '../Menu';
@@ -25,6 +26,7 @@ const Routes = () => {
           <IndexPage />
         </Route>
         <Route exact path="/account" component={ProfilePage} />
+        <Route exact path="/projects" component={ProjectsListPage} />
         <Route exact path="/logout" component={LogoutPage} />
         <Route path="*" component={NotFoundPage} />
       </Switch>
