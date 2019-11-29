@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import cn from 'classnames';
 
 import Animation from '../Animation';
-import Icon from '../Icon';
 
 import './styles.styl';
 import LoadingIcon from '../../../public/images/loading.svg';
@@ -17,7 +16,11 @@ const Button = ({ text, style, fullWidth, type, isLoading }) => {
   });
 
   const content = isLoading ? 
-    <Icon><Animation type="infinity-rotation"><LoadingIcon /></Animation></Icon> : 
+    (
+      <Animation type="infinity-rotation" width="20px" height="20px">
+        <LoadingIcon width="20px" height="20px" fill="#fff" />
+      </Animation>
+    ) : 
     text ;
 
   // eslint-disable-next-line react/button-has-type

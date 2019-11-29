@@ -4,7 +4,7 @@ import cn from 'classnames';
 
 import './styles.styl';
 
-const Animation = ({ children, type }) => {
+const Animation = ({ children, type, width, height }) => {
   // eslint-disable-next-line no-unused-vars
   const typeClass = `animation-${type}`;
   const classnames = cn({
@@ -12,12 +12,24 @@ const Animation = ({ children, type }) => {
     [typeClass]: true
   });
 
-  return <span className={classnames}>{ children }</span>;
+  const styles = {
+    width,
+    height
+  };
+
+  return <span style={styles} className={classnames}>{ children }</span>;
 };
 
 Animation.propTypes = {
   children: PropTypes.node.isRequired,
-  type: PropTypes.string.isRequired
+  type: PropTypes.string.isRequired,
+  width: PropTypes.string,
+  height: PropTypes.string
+};
+
+Animation.defaultProps = {
+  width: null,
+  height: null
 };
 
 export default Animation;
