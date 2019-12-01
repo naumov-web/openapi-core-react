@@ -5,7 +5,5 @@ export default Yup.object().shape({
   name: Yup.string()
           .required(errorMessages.required),
   description: Yup.string(),
-  format_id: Yup.number()
-          .required(errorMessages.required)
-          .integer()
+  format_id: Yup.string().required(errorMessages.required)
 });

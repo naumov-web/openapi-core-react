@@ -5,8 +5,9 @@ import { Formik, Field } from 'formik';
 // Components
 import FormRow from '../../../../../hocs/FormRow';
 import Label from '../../../../../ui-kit/Label';
-import TextInput from '../../../../../ui-kit/TextInput';
 import TextArea from '../../../../../ui-kit/TextArea';
+import TextInput from '../../../../../ui-kit/TextInput';
+import Select from '../../../../../ui-kit/Select';
 import Button from '../../../../../ui-kit/Button';
 import FieldError from '../../../../../ui-kit/FieldError';
 
@@ -14,12 +15,12 @@ import FieldError from '../../../../../ui-kit/FieldError';
 import { mergeRecursive } from '../../../../../../utils/merge_objects';
 import validationRules from '../../../../../../utils/validations/project_form';
 
-const ProjectForm = ({ submitForm, isLoading, serverErrors }) => {
+const ProjectForm = ({ submitForm, isLoading, serverErrors, formats }) => {
 
   const formValues = {
     name: '',
     description: '',
-    format_id: null,
+    format_id: '',
   };
 
   return (
@@ -83,6 +84,29 @@ const ProjectForm = ({ submitForm, isLoading, serverErrors }) => {
                   } 
                 />
                 {mergedErrors.description && <FieldError text={mergedErrors.description} />}
+              </>
+            </FormRow>
+            <FormRow>
+              <>
+                <Label text="Формат обмена данными:" htmlFor="format_id" />
+                <Field 
+                  name="description" 
+                  value={values.description}
+                  render={
+                    () => (
+                      <Select 
+                        name="format_id" 
+                        id="format_id" 
+                        placeholder="Выберите формат обмена данными" 
+                        onChange={handleChange} 
+                        onBlur={handleBlur} 
+                        value={values.description}
+                        options={formats}
+                      />
+                    )
+                  } 
+                />
+                {mergedErrors.format_id && <FieldError text={mergedErrors.format_id} />}
               </>
             </FormRow>
             <FormRow>

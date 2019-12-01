@@ -1,0 +1,23 @@
+@import "../../../styles/colors.styl"
+@import "../../../styles/font.styl"
+@import "../../../styles/paddings.styl"
+@import "../../../styles/sizes.styl"
+
+.select
+  width 100%
+  box-sizing border-box
+  padding input-padding-top input-padding-right input-padding-bottom input-padding-left
+  border-radius default-border-radius
+  border 1px solid input-border-color
+  font-size input-font-size
+  background-image embedurl("../../../public/images/arrow-down.svg")
+  background-repeat no-repeat
+  background-position 99% center
+  background-color select-bg-color
+
+.select::placeholder
+  color input-text-placeholder-color
+  opacity 1
+
+.select:focus
+  border 1px solid input-border-color-active
