@@ -1,0 +1,20 @@
+@import "../../../styles/colors.styl"
+@import "../../../styles/font.styl"
+@import "../../../styles/paddings.styl"
+@import "../../../styles/sizes.styl"
+
+.text-area
+  width 100%
+  box-sizing border-box
+  padding input-padding-top input-padding-right input-padding-bottom input-padding-left
+  border-radius default-border-radius
+  border 1px solid input-border-color
+  font-size input-font-size
+  resize none
+
+.text-area::placeholder
+  color input-text-placeholder-color
+  opacity 1
+
+.text-area:focus
+  border 1px solid input-border-color-active

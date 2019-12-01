@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Formik, Field } from 'formik'
+import { Formik, Field } from 'formik';
 
 // Components
 import FormRow from '../../../../hocs/FormRow';
