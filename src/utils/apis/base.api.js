@@ -6,6 +6,10 @@ export const auth = axios.create({
   baseURL: `${API_URL}/core/auth`
 });
 
+export const handbooks = axios.create({
+  baseURL: `${API_URL}/core/handbooks`
+});
+
 export const account = axios.create({
   baseURL: `${API_URL}/core/account`
 });

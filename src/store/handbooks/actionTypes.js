@@ -1,0 +1,1 @@
+export const SET_ALL = 'handbooks.set_all';
