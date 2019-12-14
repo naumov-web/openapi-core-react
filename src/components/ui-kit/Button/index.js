@@ -7,10 +7,11 @@ import Animation from '../Animation';
 import './styles.styl';
 import LoadingIcon from '../../../public/images/loading.svg';
 
-const Button = ({ text, style, fullWidth, type, isLoading }) => {
+const Button = ({ text, style, fullWidth, type, isLoading, widthStyle }) => {
   const classNames = cn({
     "button": true,
     "button-primary": style === 'primary',
+    "button-width-narrow": widthStyle === 'narrow',
     "button-full-width": fullWidth,
     "button-is-loading": isLoading
   });
@@ -31,6 +32,7 @@ Button.propTypes = {
   text: PropTypes.string.isRequired,
   style: PropTypes.string,
   type: PropTypes.string,
+  widthStyle: PropTypes.string,
   fullWidth: PropTypes.bool,
   isLoading: PropTypes.bool
 };
@@ -38,6 +40,7 @@ Button.propTypes = {
 Button.defaultProps = {
   style: 'primary',
   fullWidth: false,
+  widthStyle: 'narrow',
   type: 'button',
   isLoading: false
 };
