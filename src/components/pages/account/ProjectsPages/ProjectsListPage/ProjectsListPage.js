@@ -1,8 +1,9 @@
 import React from 'react';
 import SubHeader from '../../../../ui-kit/SubHeader';
+import AddLinkButton from '../../../../ui-kit/AddLinkButton';
+import ProjectsTable from './ProjectsTable';
 
 import './styles.styl';
-import AddLinkButton from '../../../../ui-kit/AddLinkButton';
 
 const ProjectsListPage = () => {
   return (
@@ -10,6 +11,9 @@ const ProjectsListPage = () => {
       <SubHeader text="Проекты" />
       <div className="add-button-row">
         <AddLinkButton link="/projects/add" text="Добавить" />
+      </div>
+      <div className="projects-table-wrapper">
+        <ProjectsTable />
       </div>
     </div>
   );

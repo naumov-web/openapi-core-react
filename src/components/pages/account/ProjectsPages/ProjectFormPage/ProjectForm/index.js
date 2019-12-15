@@ -8,7 +8,7 @@ import {
   getErrorMessages
 } from '../../../../../../store/projects/reducer';
 // Effects
-import createProject from '../../../../../../effects/account/createProject';
+import createProject from '../../../../../../effects/account/projects/createProject';
 // Components
 import ProjectForm from './ProjectForm';
 

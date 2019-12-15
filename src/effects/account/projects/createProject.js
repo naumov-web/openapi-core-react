@@ -2,10 +2,10 @@
 import { 
   createSetIsLoadingAction, 
   createSetErrorMessagesAction 
-} from '../../store/projects/actionCreators';
+} from '../../../store/projects/actionCreators';
 // API methods
-import { createProject } from '../../utils/apis/projects.api';
-import logoutUser from './logoutUser';
+import { createProject } from '../../../utils/apis/projects.api';
+import logoutUser from '../logoutUser';
 
 export default async (payload, { dispatch, history }) => {
   try {

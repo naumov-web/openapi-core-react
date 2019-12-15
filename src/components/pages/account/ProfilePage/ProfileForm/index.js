@@ -9,9 +9,9 @@ import {
   getSuccessMessage 
 } from '../../../../../store/profile/reducer';
 // Effects
-import leaveProfile from '../../../../../effects/account/leaveProfile';
-import loadProfile from '../../../../../effects/account/loadProfile';
-import updateProfile from '../../../../../effects/account/updateProfile';
+import leaveProfile from '../../../../../effects/account/profile/leaveProfile';
+import loadProfile from '../../../../../effects/account/profile/loadProfile';
+import updateProfile from '../../../../../effects/account/profile/updateProfile';
 // Components
 import ProfileForm from './ProfileForm';
 

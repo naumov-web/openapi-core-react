@@ -1,8 +1,8 @@
 // Redux methods
-import { createSetUserAction } from '../../store/profile/actionCreators';
+import { createSetUserAction } from '../../../store/profile/actionCreators';
 // API methods
-import { getProfile } from '../../utils/apis/profile.api';
-import logoutUser from './logoutUser';
+import { getProfile } from '../../../utils/apis/profile.api';
+import logoutUser from '../logoutUser';
 
 export default async ({ dispatch, history }) => {
   try {

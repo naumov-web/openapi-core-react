@@ -2,14 +2,14 @@
 import { 
   createSetIsLoadingAction, 
   createSetSuccessMessageAction 
-} from '../../store/profile/actionCreators';
+} from '../../../store/profile/actionCreators';
 // API methods
-import { updateProfile } from '../../utils/apis/profile.api';
+import { updateProfile } from '../../../utils/apis/profile.api';
 
-import logoutUser from './logoutUser';
+import logoutUser from '../logoutUser';
 
 // eslint-disable-next-line camelcase
-import success_messages from '../../utils/success_messages';
+import success_messages from '../../../utils/success_messages';
 
 export default async (payload, { dispatch, history }) => {
   try {
