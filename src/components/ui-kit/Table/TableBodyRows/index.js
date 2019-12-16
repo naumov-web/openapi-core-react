@@ -1,12 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import TableCellContent from '../TableCellContent';
 
 const TableBodyRows = ({ items, columns }) => {
   return items.map((item) => {
     return (
       <tr>
         {columns.map(column => {
-          return <td></td>;
+          return (
+            <td>
+              <TableCellContent item={item} column={column} />
+            </td>
+          );
         })}
       </tr>
     );

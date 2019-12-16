@@ -1,11 +1,19 @@
 import Immutable from 'seamless-immutable';
-import { SET_ERROR_MESSAGES, SET_IS_LOADING, SET_ITEMS, SET_OFFSET, SET_SORTING } from './actionTypes';
+import { 
+  SET_ERROR_MESSAGES, 
+  SET_IS_LOADING, 
+  SET_ITEMS, 
+  SET_OFFSET, 
+  SET_SORTING, 
+  SET_COUNT 
+} from './actionTypes';
 import { defaultLimit, defaultOffset, defaultSortBy, defaultSortDirection } from '../../config/pagination';
 
 // Initial state
 const initialState = Immutable({
   error_messages: {},
   items: [],
+  count: 0,
   limit: defaultLimit,
   offset: defaultOffset,
   sort_by: defaultSortBy,
@@ -19,6 +27,10 @@ export default function reduce(state = initialState, action = {}) {
     case SET_ITEMS:
       return state.merge({
         items: action.items
+      });
+    case SET_COUNT:
+      return state.merge({
+        count: action.count
       });
     case SET_OFFSET:
       return state.merge({
@@ -48,6 +60,8 @@ export const getIsLoading = (state) => state.projects.is_loading
 export const getErrorMessages = (state) => state.projects.error_messages;
 
 export const getItems = (state) => state.projects.items;
+
+export const getCount = (state) => state.projects.count;
 
 export const getPagination = (state) => ({
   limit: state.projects.limit,

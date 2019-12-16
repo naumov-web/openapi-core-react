@@ -17,7 +17,7 @@ const columns = [
   },
   {
     title: 'Формат',
-    name: 'formatName'
+    name: 'format_name'
   },
   {
     title: ''
@@ -27,14 +27,14 @@ const columns = [
   }
 ];
 
-const ProjectsTable = () => {
+const ProjectsTable = ({ items }) => {
   return (
     <Table fullWidth>
       <TableHead>
         <TableHeadRow columns={columns} />
       </TableHead>
       <TableBody>
-        <TableBodyRows columns={columns} items={[]} />
+        <TableBodyRows columns={columns} items={items} />
       </TableBody>
     </Table>
   );

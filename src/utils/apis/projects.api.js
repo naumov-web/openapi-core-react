@@ -1,7 +1,7 @@
 import { account } from './base.api';
 import createGetRequest from '../requests/createGetRequest';
 import createPostRequest from '../requests/createPostRequest';
-import httpBuildQuery from '../http_build_query';
+import { httpBuildQuery } from '../http_build_query';
 
 const PROJECTS_URL = '/projects';
 

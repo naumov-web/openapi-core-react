@@ -5,7 +5,7 @@ import ProjectsTable from './ProjectsTable';
 
 import './styles.styl';
 
-const ProjectsListPage = () => {
+const ProjectsListPage = ({ items }) => {
   return (
     <div className="account-page projects-list-page">
       <SubHeader text="Проекты" />
@@ -13,7 +13,7 @@ const ProjectsListPage = () => {
         <AddLinkButton link="/projects/add" text="Добавить" />
       </div>
       <div className="projects-table-wrapper">
-        <ProjectsTable />
+        <ProjectsTable items={items} />
       </div>
     </div>
   );
