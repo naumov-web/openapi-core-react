@@ -2,10 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TableCellContent from '../TableCellContent';
 
+import './styles.styl';
+
 const TableBodyRows = ({ items, columns }) => {
   return items.map((item) => {
     return (
-      <tr>
+      <tr className="table-body-row">
         {columns.map(column => {
           return (
             <td>
