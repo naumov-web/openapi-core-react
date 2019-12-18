@@ -1,0 +1,27 @@
+@import "../../../styles/colors.styl"
+@import "../../../styles/font.styl"
+@import "../../../styles/paddings.styl"
+@import "../../../styles/sizes.styl"
+
+.pagination-link
+  display inline-block
+  
+  padding-top default-half-padding
+  padding-bottom default-half-padding
+  padding-left default-padding
+  padding-right default-padding
+
+  text-decoration none
+  font-size link-font-size
+  line-height link-line-height
+  color link-color
+
+  border 1px solid pagination-link-border-color
+  border-right none
+
+.pagination-link-first
+  border-radius default-border-radius 0 0 default-border-radius
+
+.pagination-link-last
+  border-right 1px solid pagination-link-border-color
+  border-radius 0 default-border-radius default-border-radius 0
