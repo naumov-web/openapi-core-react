@@ -21,7 +21,8 @@ const Pagination = ({ count, limit, offset, onChangePage, baseUrl }) => {
         const url = `${ baseUrl }?limit=${ limit }&offset=${(number - 1) * limit}`;
         const classnames = cn({
           "pagination-link-first": number === 1,
-          "pagination-link-last": number === pageNumbers.length
+          "pagination-link-last": number === pageNumbers.length,
+          "pagination-link-active": (number - 1) * limit === offset
         });
 
         return <PaginationLink className={classnames} link={url} text={number} />;
