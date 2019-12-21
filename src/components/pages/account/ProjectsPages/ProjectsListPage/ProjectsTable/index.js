@@ -7,6 +7,8 @@ import TableHead from '../../../../../ui-kit/Table/TableHead';
 import TableHeadRow from '../../../../../ui-kit/Table/TableHeadRow';
 import TableBody from '../../../../../ui-kit/Table/TableBody';
 import TableBodyRows from '../../../../../ui-kit/Table/TableBodyRows';
+import EditLinkButton from '../../../../../ui-kit/EditLinkButton';
+import DeleteButton from '../../../../../ui-kit/DeleteButton';
 
 const columns = [
   {
@@ -24,10 +26,17 @@ const columns = [
     name: 'format_name'
   },
   {
-    title: ''
+    title: '',
+    render: ({ item }) => {
+      return <EditLinkButton link={`/projects/${item.id}`} text="Редактировать" />
+    }
   },
   {
-    title: ''
+    title: '',
+    render: () => {
+      const onClick = () => {};
+      return <DeleteButton onClick={onClick} text="Удалить" />
+    }
   }
 ];
 
