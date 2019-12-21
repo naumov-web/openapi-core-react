@@ -3,20 +3,38 @@ import { getPagination } from '../../../store/projects/reducer';
 import { 
   createSetIsLoadingAction, 
   createSetItemsAction, 
-  createSetCountAction 
+  createSetCountAction,
+  createSetPaginationAction 
 } from '../../../store/projects/actionCreators';
 // API methods
 import { getProjects } from '../../../utils/apis/projects.api';
 // Effects
 import logoutUser from '../logoutUser';
 import { mergeRecursive } from '../../../utils/merge_objects';
+import { removeUndefined } from '../../../utils/filters';
 
-// eslint-disable-next-line camelcase
-export const projectsSortBy = (sort_column, sort_direction, { state, dispatch, history }) => {
+export const projectsSetPagination = (
+  // eslint-disable-next-line camelcase
+  { limit, offset, sort_by, sort_direction}, 
+  { state, dispatch, history }
+) => {
   const params = getPagination(state);
 
   loadProjects(
-    mergeRecursive(params, {sort_column, sort_direction}), 
+    mergeRecursive(
+      params,
+      removeUndefined({ limit, offset, sort_by, sort_direction})
+    ),
+    { dispatch, history }
+  );
+};
+
+// eslint-disable-next-line camelcase
+export const projectsSetSortBy = (sort_by, sort_direction, { state, dispatch, history }) => {
+  const params = getPagination(state);
+
+  loadProjects(
+    mergeRecursive(params, {sort_by, sort_direction}), 
     { dispatch, history }
   );
 };
@@ -42,6 +60,9 @@ export const projectsLoadDefault = async ({ state, dispatch, history }) => {
 // eslint-disable-next-line camelcase
 const loadProjects = async ({ limit, offset, sort_by, sort_direction }, { dispatch, history }) => {
   dispatch(createSetIsLoadingAction(true));
+  dispatch(createSetPaginationAction(
+    { limit, offset, sort_by, sort_direction }
+  ));
 
   try {
     const data = await getProjects({ limit, offset, sort_by, sort_direction });

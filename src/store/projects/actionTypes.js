@@ -9,3 +9,5 @@ export const SET_OFFSET = 'projects.set_offset';
 export const SET_SORTING = 'projects.set_sorting';
 
 export const SET_COUNT = 'projects.set_count';
+
+export const SET_PAGINATION = 'projects.set_pagination';

@@ -4,7 +4,7 @@ import cn from 'classnames';
 // Components
 import PaginationLink from './PaginationLink';
 
-const Pagination = ({ count, limit, offset, onChangePage, baseUrl }) => {
+const Pagination = ({ count, limit, offset, baseUrl, onChangePage }) => {
   if (count <= limit) {
     return null;
   }
@@ -25,7 +25,15 @@ const Pagination = ({ count, limit, offset, onChangePage, baseUrl }) => {
           "pagination-link-active": (number - 1) * limit === offset
         });
 
-        return <PaginationLink className={classnames} link={url} text={number} />;
+        return (
+          <PaginationLink 
+            className={classnames} 
+            link={url} 
+            text={number} 
+            offset={(number - 1) * limit}
+            onClick={onChangePage} 
+          />
+        );
       })}
     </div>
   );
@@ -36,11 +44,7 @@ Pagination.propTypes = {
   count: PropTypes.number.isRequired,
   limit: PropTypes.number.isRequired,
   offset: PropTypes.number.isRequired,
-  onChangePage: PropTypes.func
-};
-
-Pagination.defaultProps = {
-  onChangePage: () => {}
+  onChangePage: PropTypes.func.isRequired
 };
 
 export default Pagination;

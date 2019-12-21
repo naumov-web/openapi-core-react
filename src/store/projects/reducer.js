@@ -5,7 +5,8 @@ import {
   SET_ITEMS, 
   SET_OFFSET, 
   SET_SORTING, 
-  SET_COUNT 
+  SET_COUNT,
+  SET_PAGINATION 
 } from './actionTypes';
 import { defaultLimit, defaultOffset, defaultSortBy, defaultSortDirection } from '../../config/pagination';
 
@@ -49,6 +50,8 @@ export default function reduce(state = initialState, action = {}) {
       return state.merge({
         is_loading: action.is_loading
       });
+    case SET_PAGINATION:
+      return state.merge(action.pagination);
     default:
       return state;
   }

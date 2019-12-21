@@ -4,7 +4,8 @@ import {
   SET_ITEMS, 
   SET_OFFSET, 
   SET_SORTING, 
-  SET_COUNT 
+  SET_COUNT,
+  SET_PAGINATION
 } from './actionTypes';
 
 // eslint-disable-next-line camelcase
@@ -39,4 +40,9 @@ export const createSetSortingAction = (sort_by, sort_direction) => ({
   type: SET_SORTING,
   sort_by,
   sort_direction
+});
+
+export const createSetPaginationAction = (pagination) => ({
+  type: SET_PAGINATION,
+  pagination
 });

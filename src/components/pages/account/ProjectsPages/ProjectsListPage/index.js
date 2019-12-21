@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { compose, lifecycle } from 'recompose';
+import { compose, lifecycle, withHandlers } from 'recompose';
 import { withRouter } from 'react-router-dom';
 import queryString from 'query-string';
 // Redux
@@ -7,7 +7,7 @@ import { getIsLoading, getItems, getCount, getPagination } from '../../../../../
 // Effects
 import { 
   projectsLoadDefault, 
-  projectsSetOffset 
+  projectsSetPagination 
 } from '../../../../../effects/account/projects/loadProjects';
 // Components
 import ProjectsListPage from './ProjectsListPage';
@@ -24,22 +24,43 @@ function mapStateToProps(state) {
   };
 }
 
+const onChangePagination = (
+  // eslint-disable-next-line camelcase
+  { limit, offset, sort_by, sort_direction }, 
+  { dispatch, history, state }
+) => {
+
+  projectsSetPagination(
+    { limit, offset, sort_by, sort_direction },
+    { dispatch, history, state }
+  );
+};
+
+const handlers = withHandlers({
+  // eslint-disable-next-line camelcase
+  onChangePage: ({ dispatch, history, state }) => ({ offset }) => {
+    onChangePagination(
+      { offset }, 
+      { dispatch, history, state }
+    );
+  },
+  // eslint-disable-next-line camelcase
+  onChangeSorting: ({ dispatch, history, state }) => ({ sort_by, sort_direction }) => {
+    onChangePagination(
+      { sort_by, sort_direction }, 
+      { dispatch, history, state }
+    );
+  }
+});
+
 const withLifecycle = lifecycle({
   componentDidMount(){
     const { dispatch, history, state } = this.props;
 
-    history.listen((location) => {
-      const params = queryString.parse(location.search);
-
-      projectsSetOffset(params.offset, { state, dispatch, history });
-    });
-
     if (history.location.search) {
       const params = queryString.parse(history.location.search);
-      if (params.offset) {
-        projectsSetOffset(params.offset, { state, dispatch, history });
-        return;
-      }
+      
+      projectsSetPagination(params, { state, dispatch, history });
     }
 
     projectsLoadDefault({ state, dispatch, history });
@@ -49,5 +70,6 @@ const withLifecycle = lifecycle({
 export default compose(
   connect(mapStateToProps),
   withRouter,
+  handlers,
   withLifecycle
 )(ProjectsListPage);
